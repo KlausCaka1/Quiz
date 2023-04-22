@@ -14,12 +14,12 @@ export class QuizResultsComponent implements OnInit {
     private router: Router) {
   }
 
-  public points!: number
+  public points: number = 0
 
   ngOnInit(): void {
     this.route.queryParams.pipe(
       tap(params => {
-        this.points = params['pointSum']
+        this.points = params['pointSum'] ? params['pointSum'] : 0
       })
     ).subscribe()
   }

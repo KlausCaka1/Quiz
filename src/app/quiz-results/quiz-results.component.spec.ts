@@ -25,4 +25,9 @@ describe('QuizResultsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('points type should number', () => {
+    const app = fixture.debugElement.componentInstance;
+    expect(app.points).toBeInstanceOf(Number)
+  })
 });

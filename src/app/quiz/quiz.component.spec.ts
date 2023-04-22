@@ -8,6 +8,7 @@ import {HttpClientTestingModule, HttpTestingController} from "@angular/common/ht
 import {interval, Observable, of} from "rxjs";
 import {Quiz} from "../shared/client-model";
 import {QUIZ} from "../../assets/mock/data-mock";
+import {By} from "@angular/platform-browser";
 
 describe('QuizComponent', () => {
   let component: QuizComponent;
@@ -48,6 +49,17 @@ describe('QuizComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.points).toBeInstanceOf(Array<number>)
   })
+
+  it('should have white color', () => {
+    const e = fixture.debugElement.query(By.css(".title")).nativeElement;
+    expect(getComputedStyle(e).color).toEqual('rgb(255, 255, 255)');
+  });
+
+  it('container is flex and centered', () => {
+    const e = fixture.debugElement.query(By.css(".main")).nativeElement;
+    expect(getComputedStyle(e).display === 'flex' && getComputedStyle(e).alignItems === 'center'
+  && getComputedStyle(e).justifyContent === 'center').toBeTruthy();
+  });
 
   it('nrQuestion should be lowered', () => {
     service.getQuestions().subscribe(res => {
