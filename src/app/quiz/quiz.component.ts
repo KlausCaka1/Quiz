@@ -13,7 +13,7 @@ export class QuizComponent implements OnInit {
 
   public quizzes!: Quiz[]
   public nrQuestion: number = 0
-  public points: number[] = []
+  public points: Array<number> = []
   public point: number = 0
   public orders: string[] = ['A', 'B', 'C', 'D']
 
@@ -26,10 +26,11 @@ export class QuizComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.pipe(
       tap(params => {
+        console.log(params)
         this.point = 0
-        this.points = params['points'] ? params['points'].map((point: string) => {
+        this.points = Array.isArray(params['points']) ? params['points'].map((point: string) => {
           return parseInt(point)
-        }) : []
+        }) : params['points'] ? [params['points']] : []
         this.nrQuestion = params['questionIndex'] ? parseInt(params['questionIndex']) : 0
       })
     ).subscribe()
@@ -47,12 +48,8 @@ export class QuizComponent implements OnInit {
     ).subscribe()
   }
 
-  getQuestions() {
-    return
-  }
-
   nextQuestion() {
-    this.points.push(this.point)
+    this.points.push(this.point ? this.point : 0)
     this.nrQuestion++
     this.navigateToNextQuestion()
   }
