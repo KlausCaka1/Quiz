@@ -74,7 +74,7 @@ export class QuizComponent implements OnInit {
   }
 
   navigateToNextQuestion() {
-    this.router.navigate(['/'], {
+    this.router.navigate(['/quiz'], {
       queryParams: {
         points: this.points,
         questionIndex: this.nrQuestion

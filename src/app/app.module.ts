@@ -12,12 +12,14 @@ import {BrowserDynamicTestingModule} from "@angular/platform-browser-dynamic/tes
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {ClientService} from "./shared/client.service";
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
-    QuizResultsComponent
+    QuizResultsComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

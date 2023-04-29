@@ -25,6 +25,6 @@ export class QuizResultsComponent implements OnInit {
   }
 
   reTakeTest() {
-    this.router.navigate(['/'])
+    this.router.navigate(['/quiz'])
   }
 }
